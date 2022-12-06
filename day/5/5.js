@@ -4,6 +4,7 @@ const path = require('path');
 const input = fs.readFileSync(path.join(__dirname, '../input/5.txt')).toString();
 
 const t = input.split('[');
+console.log(t);
 
 let arrI = 0;
 let isFirstLine = true;
@@ -32,25 +33,18 @@ for (const u of t) {
   }
 }
 
-console.log(matrix);
-
 const actions = input
   .split('\n')
   .filter((u) => u.startsWith('move'))
   .map((a) => a.match(/\d+/g).map(Number));
 
-console.log(matrix);
-
 for (const a of actions) {
   const [turn, from, to] = a;
-  console.log({ a });
   for (let i = 0; i < a[0]; i += 1) {
     const temp = matrix[from - 1].shift();
     if (!temp) continue;
     matrix[to - 1].unshift(temp);
-    console.log({ temp });
   }
-  console.log(matrix);
 }
 
 const result = matrix.map((c) => c[0]).join('');

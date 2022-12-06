@@ -9,8 +9,28 @@ let arrI = 0;
 let isFirstLine = true;
 const matrix = [];
 
-j;
-console.log(matrix);
+for (const u of t) {
+  if (u[0] !== ' ') {
+    if (!matrix[arrI]) {
+      matrix[arrI] = [];
+    }
+    matrix[arrI].push(u[0]);
+    arrI += 1;
+  } else {
+    const ttt = u.split('      ');
+    arrI += ttt.length;
+  }
+
+  const sp = u.split(']');
+  if (sp[1]?.length > 1) {
+    const ttt = u.split('      ');
+    arrI += ttt.length;
+  }
+
+  if (u.includes('\n')) {
+    arrI = 0;
+  }
+}
 
 const actions = input
   .split('\n')
@@ -21,7 +41,6 @@ console.log(matrix);
 
 for (const a of actions) {
   const [turn, from, to] = a;
-  console.log({ a });
   const temp = matrix[from - 1].splice(0, turn);
   if (!temp.length) continue;
   matrix[to - 1].unshift(...temp);
