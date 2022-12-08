@@ -49,3 +49,9 @@ for (const a of actions) {
 
 const result = matrix.map((c) => c[0]).join('');
 console.log(result);
+
+const comment = 'nommer' + 'une' + 'variable';
+
+const commeUNPRO = '?';
+
+const variable = 
